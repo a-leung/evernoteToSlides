@@ -64,18 +64,17 @@ class _DeHTMLParser(HTMLParser):
         if len(text) > 0:
             text = sub('[ \t\r\n]+', ' ', text)
             self.__text.append(text + ' ')
+            self.__text.append('\n ----- blah ---- \n')
 
     def handle_starttag(self, tag, attrs):
         if tag == 'p':
             self.__text.append('\n\n')
-        elif tag == 'br':
-            self.__text.append('\n')
 
     def handle_startendtag(self, tag, attrs):
         if tag == 'br':
-            self.__text.append('\n\n')
+            self.__text.append(' <p> ')
         elif tag == 'hr':
-            self.__text.append('<section class=\"slide\">')
+            self.__text.append('\n <section class=\"slide\"> <h1>\n')
 
     def text(self):
         return ''.join(self.__text).strip()
@@ -115,10 +114,10 @@ version_ok = user_store.checkVersion(
     UserStoreConstants.EDAM_VERSION_MAJOR,
     UserStoreConstants.EDAM_VERSION_MINOR
 )
-print "Is my Evernote API version up to date? ", str(version_ok)
-print ""
-if not version_ok:
-    exit(1)
+#print "Is my Evernote API version up to date? ", str(version_ok)
+#print ""
+#if not version_ok:
+#    exit(1)
 
 note_store = client.get_note_store()
 
@@ -139,6 +138,8 @@ note = note_store.getNote('3723f845-c13a-4a3b-9be9-43dfe6a0bbdf',
 
 #parser = MyHTMLParser()
 #parser.feed(note.content)
+
+#print header
 
 print(dehtml(note.content))
 #print note.content
