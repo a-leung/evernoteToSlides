@@ -1,0 +1,43 @@
+.deck-container .deck-automatic-link {
+	position:absolute;
+	z-index:3;
+	bottom: 50px;
+	left:49%;
+	margin-top:-16px;
+	font-size:40px;
+	font-weight:bold;
+	line-height:32px;
+	vertical-align:middle;
+	text-align:center;
+	text-decoration:none;
+	cursor: pointer;
+}
+
+.deck-container .deck-automatic-link.deck-automatic-running {
+	color: gray;
+}
+
+.deck-container .deck-automatic-link.deck-automatic-stopped {
+	color: red;
+}
+
+.borderradius .deck-container .deck-automatic-link {
+	border-radius(10px);
+	opacity: .2;
+}
+
+.deck-container .deck-automatic-link:hover {
+	color:lightgray ;
+	opacity: 1;
+}
+
+.deck-container .deck-automatic-link:active {
+	background-color: red;
+	opacity: .4;
+}
+
+@media print {
+	.deck-automatic-link {
+		display:none !important;
+	}
+}

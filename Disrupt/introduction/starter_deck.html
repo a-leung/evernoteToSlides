@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Getting Started with deck.js</title>
+	
+	<meta name="description" content="A jQuery library for modern HTML presentations">
+	<meta name="author" content="Caleb Troughton">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="../core/deck.core.css">
+	<link rel="stylesheet" href="../extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="../extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="../extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="../extensions/status/deck.status.css">
+	<link rel="stylesheet" href="../extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="../extensions/scale/deck.scale.css">
+	<link rel="stylesheet" href="../extensions/automatic/deck.automatic.css">
+
+	
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" href="../themes/style/swiss.css">
+	
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="../themes/transition/horizontal-slide.css">
+	
+	<script src="../modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+
+<!-- Begin slides -->
+<section class="slide">
+  <h2>A List of Things I Like</h2>
+  <ol>
+    <li>
+      <h3>Cupcakes</h3>
+      <p>They're tasty, but don't eat too many or you'll get fat!</p>
+    </li>
+    <li>
+      <h3>Technology</h3>
+      <p>It's tasty, but don't eat too much technology...or any technology...because it's not food.</p>
+    </li>
+	<li>
+      <h3>Slankets</h3>
+      <p>They catch all your cupcake and technology crumbs.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="slide">
+  <h2>I Like Din Tai Fung</h2>
+  <img src="http://toasterdog.com/files/DTF-Shirt.jpg" width="400" height="414" />
+</section>
+
+<section class="slide">
+  <h2>I Have Cute Cousins</h2>
+  <iframe src="http://player.vimeo.com/video/32373533?title=0&amp;byline=0&amp;portrait=0&amp;color=c9ff23" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</section>
+
+<section class="slide">
+  <h2>Want to Wrap Text Around An Image? No Problem!</h2>
+  <img src="http://toasterdog.com/files/FacePunch.jpg" width="292" height="334" style="float: left; padding: 0 16px 8px 0;" /><p>Here's a bunch of text.  Blah blah blah.  Look at the difference in this image tag to see how style was added to wrap text around it.</p>
+
+<p>I'm going to borrow some text from one of Whitson's articles in this section: "I'll let you in on a little secret: I've developed a small hatred for mobile devices. I don't think they're easier to use than a desktop, I don't find that I want to use them that much when I'm out of the house (because I'd rather talk to the people I'm with), and if I'm at home, I'd rather be on my desktop. I use my phone for texting and getting phone calls, or Yelp when I need it, and I use my iPod for listening to music. That's pretty much it. Fiddling with them—as I've been known to do with tech from time to time—just isn't as worth it as it used to be, because they aren't a central part of my workflow. Here are the mobile devices I have lying around, though, and the occasional conveniences they bring to my life."</p>
+</section>
+
+<section class="slide">
+  	<h2>Let's End with a Quote</h2>
+  	<blockquote>
+	<p>"Keep giving them you, until you is what they want."</p>
+	<cite>Dennis Palumbo</cite>
+	</blockquote>
+</section>
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../jquery-1.7.2.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="../core/deck.core.js"></script>
+<script src="../extensions/hash/deck.hash.js"></script>
+<script src="../extensions/menu/deck.menu.js"></script>
+<script src="../extensions/goto/deck.goto.js"></script>
+<script src="../extensions/status/deck.status.js"></script>
+<script src="../extensions/navigation/deck.navigation.js"></script>
+<script src="../extensions/scale/deck.scale.js"></script>
+<script src="../extensions/automatic/deck.automatic.js"></script>
+
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+
+</body>
+</html>

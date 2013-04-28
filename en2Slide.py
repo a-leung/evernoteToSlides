@@ -10,23 +10,23 @@
 
 header = """
         <html> <head>
-  <script src="../jquery-1.7.2.min.js"></script>
-  <script src="../modernizr.custom.js"></script>
-  <script src="../core/deck.core.js"></script>
-  <script src="../extensions/navigation/deck.navigation.js"></script>
-  <script src="../extensions/automatic/deck.automatic.js"></script>
-  <script src="../extensions/scale/deck.scale.js"></script>
+  <script src="jquery-1.7.2.min.js"></script>
+  <script src="modernizr.custom.js"></script>
+  <script src="core/deck.core.js"></script>
+  <script src="extensions/navigation/deck.navigation.js"></script>
+  <script src="extensions/automatic/deck.automatic.js"></script>
+  <script src="extensions/scale/deck.scale.js"></script>
 
 
-  <link rel="stylesheet" type="text/css" href="../core/deck.core.css"></link>
-  <link rel="stylesheet" type="text/css" href="../extensions/navigation/deck.navigation.css"></link>
-  <link rel="stylesheet" type="text/css" href="../extensions/automatic/deck.automatic.css"></link>
-    <link rel="stylesheet" type="text/css" href="../extensions/scale/deck.scale.css"></link>
+  <link rel="stylesheet" type="text/css" href="core/deck.core.css"></link>
+  <link rel="stylesheet" type="text/css" href="extensions/navigation/deck.navigation.css"></link>
+  <link rel="stylesheet" type="text/css" href="extensions/automatic/deck.automatic.css"></link>
+    <link rel="stylesheet" type="text/css" href="extensions/scale/deck.scale.css"></link>
 
 
 
-  <link rel="stylesheet" href="../themes/style/mod.css">
-  <link rel="stylesheet" href="../themes/transition/cube.css">
+  <link rel="stylesheet" href="themes/style/mod.css">
+  <link rel="stylesheet" href="themes/transition/cube.css">
 
 
 
@@ -47,11 +47,6 @@ footer = """
   <script>
     $(function() {
       $.extend(true, $.deck.defaults, {
-         automatic: {
-     			startRunning: true,
-     			cycle: true,
-     			slideDuration: 3000
-     		}
       });
       $.deck('.slide');
     })
@@ -122,8 +117,13 @@ soup = BeautifulSoup(note.content)
 
 print header
 
+#print note.content
+#print "-------"
+
+print "<section class=\"slide\">"
 for a in soup.find_all("div"):
     if a.find_all("hr"):
+        print "</section>"
         print "<section class=\"slide\">"
         print "<h1>", a.get_text(), "</h1>"
     else:
