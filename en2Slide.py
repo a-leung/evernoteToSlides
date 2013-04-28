@@ -47,6 +47,11 @@ footer = """
   <script>
     $(function() {
       $.extend(true, $.deck.defaults, {
+         automatic: {
+     			startRunning: false,
+     			cycle: false,
+     			slideDuration: 3000
+     		}
       });
       $.deck('.slide');
     })
@@ -115,22 +120,28 @@ note = note_store.getNote('3723f845-c13a-4a3b-9be9-43dfe6a0bbdf',
 
 soup = BeautifulSoup(note.content)
 
-print header
+#print header
 
 #print note.content
 #print "-------"
 
-print "<section class=\"slide\">"
+sectionHead = 0
+
 for a in soup.find_all("div"):
-    if a.find_all("hr"):
-        print "</section>"
+    temp = a.find_all("hr")
+    if temp:
+        if sectionHead != 0:
+            print "</section>"
+        else:
+            sectionHead += 1
         print "<section class=\"slide\">"
         print "<h1>", a.get_text(), "</h1>"
     else:
-        print "<p>", a, "</p>"
+        if (len(a.find_all("br")) < 1):
+            print  "<p>", a, "</p>"
 
 print "</section>"
-print footer
+#print footer
 
 
 #parser = MyHTMLParser()

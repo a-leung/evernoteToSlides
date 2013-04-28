@@ -28,6 +28,8 @@
   <div class="deck-container">
 
 <section class="slide">
+</section>
+<section class="slide">
 <h1> hello world! </h1>
 <p> <div><br clear="none"/></div> </p>
 <p> <div>I am the first point</div> </p>
@@ -49,6 +51,11 @@
   <script>
     $(function() {
       $.extend(true, $.deck.defaults, {
+         automatic: {
+     			startRunning: false,
+     			cycle: false,
+     			slideDuration: 3000
+     		}
       });
       $.deck('.slide');
     })
