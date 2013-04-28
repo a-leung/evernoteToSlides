@@ -17,18 +17,13 @@ header = """
   <script src="extensions/automatic/deck.automatic.js"></script>
   <script src="extensions/scale/deck.scale.js"></script>
 
-
   <link rel="stylesheet" type="text/css" href="core/deck.core.css"></link>
   <link rel="stylesheet" type="text/css" href="extensions/navigation/deck.navigation.css"></link>
   <link rel="stylesheet" type="text/css" href="extensions/automatic/deck.automatic.css"></link>
     <link rel="stylesheet" type="text/css" href="extensions/scale/deck.scale.css"></link>
 
-
-
   <link rel="stylesheet" href="themes/style/mod.css">
   <link rel="stylesheet" href="themes/transition/cube.css">
-
-
 
 <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 
@@ -120,7 +115,7 @@ note = note_store.getNote('3723f845-c13a-4a3b-9be9-43dfe6a0bbdf',
 
 soup = BeautifulSoup(note.content)
 
-#print header
+print header
 
 #print note.content
 #print "-------"
@@ -135,13 +130,13 @@ for a in soup.find_all("div"):
         else:
             sectionHead += 1
         print "<section class=\"slide\">"
-        print "<h1>", a.get_text(), "</h1>"
+        print "<h2>", a.get_text(), "</h2>"
     else:
         if (len(a.find_all("br")) < 1):
-            print  "<p>", a, "</p>"
+            print  "<h3 style=\"color:white;\" >", a , "</h3>"
 
 print "</section>"
-#print footer
+print footer
 
 
 #parser = MyHTMLParser()
