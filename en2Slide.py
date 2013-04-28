@@ -38,6 +38,27 @@ header = """
   <div class="deck-container">
 """
 
+footer = """
+
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    <div class='deck-automatic-link' title="Play/Pause">||</div>
+  </div>
+  <script>
+    $(function() {
+      $.extend(true, $.deck.defaults, {
+         automatic: {
+     			startRunning: true,
+     			cycle: true,
+     			slideDuration: 3000
+     		}
+      });
+      $.deck('.slide');
+    })
+  </script
+</body>
+</html>
+"""
 
 
 import hashlib
@@ -49,46 +70,7 @@ import evernote.edam.notestore.NoteStore as NoteStore
 
 from evernote.api.client import EvernoteClient
 
-from HTMLParser import HTMLParser
-from re import sub
-from sys import stderr
-from traceback import print_exc
-
-class _DeHTMLParser(HTMLParser):
-    def __init__(self):
-        HTMLParser.__init__(self)
-        self.__text = []
-
-    def handle_data(self, data):
-        text = data.strip()
-        if len(text) > 0:
-            text = sub('[ \t\r\n]+', ' ', text)
-            self.__text.append(text + ' ')
-            self.__text.append('\n ----- blah ---- \n')
-
-    def handle_starttag(self, tag, attrs):
-        if tag == 'p':
-            self.__text.append('\n\n')
-
-    def handle_startendtag(self, tag, attrs):
-        if tag == 'br':
-            self.__text.append(' <p> ')
-        elif tag == 'hr':
-            self.__text.append('\n <section class=\"slide\"> <h1>\n')
-
-    def text(self):
-        return ''.join(self.__text).strip()
-
-def dehtml(text):
-    try:
-        parser = _DeHTMLParser()
-        parser.feed(text)
-        parser.close()
-        return parser.text()
-    except:
-        print_exc(file=stderr)
-        return text
-
+from bs4 import BeautifulSoup
 # Real applications authenticate with Evernote using OAuth, but for the
 # purpose of exploring the API, you can get a developer token that allows
 # you to access your own Evernote account. To get a developer token, visit
@@ -136,12 +118,27 @@ note = note_store.getNote('3723f845-c13a-4a3b-9be9-43dfe6a0bbdf',
              False, #withResourcesRecognition
              False) #withResourcesAlternateData
 
+soup = BeautifulSoup(note.content)
+
+print header
+
+for a in soup.find_all("div"):
+    if a.find_all("hr"):
+        print "<section class=\"slide\">"
+        print "<h1>", a.get_text(), "</h1>"
+    else:
+        print "<p>", a, "</p>"
+
+print "</section>"
+print footer
+
+
 #parser = MyHTMLParser()
 #parser.feed(note.content)
 
-#print header
 
-print(dehtml(note.content))
+
+#print(dehtml(note.content))
 #print note.content
  
 # list notes
