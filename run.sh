@@ -3,5 +3,5 @@
 while true 
 do
   python en2Slide.py > demo.html
-  sleep 3
+  sleep 1
 done
